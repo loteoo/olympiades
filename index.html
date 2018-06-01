@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Quiz compétences quebec</title>
+
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/fontawesome-all.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+</head>
+<body>
+
+	<header>
+		<div class="user slidesDown">
+			<div class="userinfo">
+				<i class="fa fa-user"></i>
+				<div>
+					<span class="id"></span>
+					<span class="name"></span>
+				</div>
+			</div>
+			<div class="highscore"></div>
+		</div>
+		<div class="info slidesDown">
+			<div>
+				<i class="fa fa-clock"></i>
+				<span class="timer"></span>
+			</div>
+			<div>
+				<i class="fa fa-star"></i>
+				<span class="percent"></span>
+			</div>
+		</div>
+	</header>
+
+
+	<section id="home" class="fadesInOut">
+
+		<div class="heading">
+			<h1 class="slidesLeftRight slideLeft">Quiz<i class="fa fa-question-circle scalesUpDown scaleDown"></i></h1>
+			<h2 class="slidesLeftRight slideRight">des Olympiades québécoises</h2>
+		</div>
+
+		<div class="loginForm">
+			<div class="cardLayout">
+				<div class="bottom">
+					<div class="instructions">
+						<h4>Pour débuter, veuillez choisir un nom ci-bas.</h4>
+						<form action="/api/api.php?action=loginOrCreateUser" method="post">
+							<input type="text" name="username" minlength="3" required autocomplete="off" autofocus placeholder="Pseudonyme">
+							<button type="submit">Commencer<i class="fa fa-arrow-right"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section id="quiz" class="fadesInOut">
+	</section>
+
+
+
+	<section id="results" class="fadesInOut">
+		<div class="cardLayout">
+			<div class="top">
+				<h2>Partie terminée!</h2>
+			</div>
+			<div class="bottom">
+				<div class="quizOverview">
+					<div>
+						<h3>Cette partie</h3>
+						<div class="thisScore"></div>
+					</div>
+					<div>
+						<h3>Votre meilleure</h3>
+						<div class="bestScore"></div>
+					</div>
+				</div>
+
+				<div class="listTitle">Meilleures parties</div>
+
+				<ul class="scoreList"></ul>
+
+				<div class="actions">
+					<button class="restart">Rejouer<i class="fa fa-play"></i></button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="profilePage" class="fadesInOut"></section>
+
+
+	<!-- Puisqu'on peut pas utiliser de librairies optimisés pour ceci, je crées mes templates html à utiliser via javascript ici -->
+	<!-- Ceci me permet d'éviter de faire plein de createElement en javascript, ou de concatainer du html en javascript. -->
+	<div id="templates">
+		
+
+		<!-- Template des questions -->
+		<form class="questionPage cardLayout slidesLeftRight" data-answer="">
+			<div class="top">
+				<h2></h2>
+				<span></span>
+			</div>
+			<div class="bottom">
+				<h2></h2>
+				<h4 class="question"></h4>
+				<div class="choices"></div>
+				<div class="messages">
+					<div class="hint fadesInOut"></div>
+					<div class="success fadesInOut">Bonne réponse!</div>
+				</div>
+				<div class="actions">
+					<button type="submit" class="validate disabled">Valider<i class="fa fa-check"></i></button>
+					<button type="submit" class="next">Prochaine question<i class="fa fa-arrow-right"></i></button>
+					<button type="submit" class="next finish">Terminer le quiz!<i class="fa fa-flag"></i></button>
+				</div>
+			</div>
+		</form>
+
+
+		<!-- Template d'un choix -->
+		<label class="choice">
+			<input type="radio" name="choice" value="" required>
+			<span></span>
+		</label>
+
+		<!-- Template d'un resultat -->
+		<li class="result">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</li>
+
+
+
+
+		<!-- Template d'un profil joueur -->
+		<div class="profileBox cardLayout">
+			<div class="top">
+				<h2></h2>
+				<div class="close"><i class="fa fa-plus"></i></div>
+			</div>
+			<div class="bottom">
+
+				<div class="quizOverview">
+					<div>
+						<h3>Meilleure partie</h3>
+						<div class="bestScore"></div>
+						<div class="date"></div>
+					</div>
+					<div>
+						<h3>Pire partie</h3>
+						<div class="worstScore"></div>
+						<div class="date"></div>
+					</div>
+				</div>
+
+				<h4><span>Score moyen: </span><b></b></h4>
+				<h4><span>Temps moyen: </span><b></b></h4>
+
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/assets/js/main.js"></script>
+</body>
+</html>
